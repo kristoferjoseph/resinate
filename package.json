@@ -1,0 +1,35 @@
+{
+  "name": "resinate",
+  "version": "0.0.0",
+  "description": "Write CSS that uses import like a node.js require statement",
+  "bin": "bin/resinate",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kristoferjoseph/resinate.git"
+  },
+  "keywords": [
+    "css",
+    "resin",
+    "browser"
+  ],
+  "author": "Kristofer Joseph @dam",
+  "license": "Apache2",
+  "bugs": {
+    "url": "https://github.com/kristoferjoseph/resinate/issues"
+  },
+  "homepage": "https://github.com/kristoferjoseph/resinate",
+  "dependencies": {
+    "commander": "^2.1.0",
+    "resumer": "^0.0.0",
+    "fs-extra": "^0.8.1",
+    "resin": "~0.1.3"
+  },
+  "devDependencies": {
+    "mocha": "^1.17.1",
+    "nixt": "^0.3.0"
+  }
+}

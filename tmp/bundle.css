@@ -1,0 +1,568 @@
+test/fixtures/license.txt:root {
+  var-font-weight--cta: 500;
+  var-overflow: hidden;
+  var-radio-offset: -109px;
+  var-radio-offset--checked: -74px;
+  var-radio-width: 37px;
+  var-radio-bgsize: var(radio-width);
+  var-radio-height: 31px;
+  var-radio-line-height: var(radio-height);
+  var-radio-margin: 15px;
+  var-overlay-bg-color: rgba(88, 90, 92, 0.7);
+  var-overlay-padding: 20px 10px;
+  var-overlay-bg-box-shadow: inset 0px 0px 115px 0px #000000;
+  var-overlay-width: 50%;
+  var-overlay-margin--left: - var(overlay-width) / 2;
+  var-font-size--textarea--large: 1.3rem;
+  var-line-height--large: 1.3rem;
+  var-margin: 0;
+  var-bar-border-radius: 12px;
+  var-bar-width: 250px;
+  var-bar-height: 1.25rem;
+  var-progress-border-radius: 12px 0 0 12px;
+  var-content--switch__label--left: 'ON';
+  var-content--switch__label--right: 'OFF';
+  var-margin-bottom--switch__toggle: -1px;
+  var-margin-top--switch__toggle: -1px;
+  var-transition--switch__toggle: margin-left 0.05s ease-in-out;
+  var-margin-bottom--switch__toggle: -1px;
+  var-margin-top--switch__toggle: -1px;
+  var-padding--notification: 0.15em 0.5em 0.2em;
+  var-margin--notification: 5px;
+  var-border-radius--notification: 2px;
+  var-color--notification: #fff;
+  var-search-icon: url("../img/search.svg");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url('../font/SourceSansPro-Regular.otf');
+}
+
+body {
+  font: var(font-size) "Source Sans Pro", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: var(font-weight);
+}
+
+:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+%reset-base {
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+}
+
+%reset-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+%reset-quiet {
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+}
+
+%reset-input {
+  extend: %reset-base;
+  extend: %reset-box-model;
+  vertical-align: top;
+  outline: none;
+}
+
+%hide-input {
+  position: absolute;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  opacity: 0.001;
+  z-index: 1;
+  vertical-align: top;
+  outline: none;
+}
+
+%reset-cursor {
+  cursor: default;
+  user-select: none;
+}
+
+%reset-box-model {
+  box-sizing: border-box;
+  background-clip: padding-box;
+}
+
+%reset-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+%reset-container {
+  extend: %reset-box-model;
+  extend: %reset-overflow;
+  word-spacing: 0;
+}
+
+%inline-block {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+
+%ellipsis {
+  text-overflow: ellipsis;
+  extend: %reset-overflow;
+}
+
+%disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+%button {
+  extend: %inline-block;
+  extend: %reset-box-model;
+  extend: %reset-base;
+  extend: %reset-cursor;
+  extend: %ellipsis;
+  text-decoration: none;
+}
+
+%button--quiet {
+  extend: %reset-quiet;
+}
+
+%button--disabled {
+  extend: %disabled;
+}
+
+/* topdoc
+  name: Button
+  description: A simple button
+  modifiers:
+    :active: Active state
+    :disabled: Disabled state
+    :hover: Hover state
+    :focus: Focused
+  markup:
+    <button class="topcoat-button">Button</button>
+    <button class="topcoat-button" disabled>Button</button>
+  examples:
+    mobile button: http://codepen.io/Topcoat/pen/DpKtf
+  tags:
+    - desktop
+    - light
+    - mobile
+    - button
+*/
+
+%button--common {
+  extend: %button;
+  padding: var(padding);
+  font-size: var(font-size);
+  font-weight: var(font-weight);
+  line-height: var(line-height);
+  letter-spacing: var(letter-spacing);
+  color: var(color);
+  text-shadow: var(text-shadow);
+  vertical-align: var(vertical-align);
+  border-radius: var(border-radius);
+}
+
+.button {
+  extend: %button--common;
+  background-color: var(background-color);
+  box-shadow: var(box-shadow);
+  border: var(border);
+}
+
+.button:hover {
+  background-color: var(background-color--hover);
+}
+
+.button:active {
+  background-color: var(background-color--down);
+  box-shadow: var(box-shadow--down);
+}
+
+.button:focus {
+  border: var(border--focus);
+  box-shadow: var(box-shadow--focus);
+  outline: 0;
+}
+
+.button:disabled {
+  extend: %button--disabled;
+}
+
+/* topdoc
+  name: Quiet Button
+  description: A simple, yet quiet button
+  modifiers:
+    :active: Quiet button active state
+    :disabled: Disabled state
+    :hover: Hover state
+    :focus: Focused
+  markup:
+    <button class="topcoat-button--quiet">Button</button>
+    <button class="topcoat-button--quiet" disabled>Button</button>
+  tags:
+    - desktop
+    - light
+    - mobile
+    - button
+    - quiet
+*/
+
+.button--quiet {
+  extend: %button--common;
+  extend: %button--quiet;
+}
+
+.button--quiet:disabled {
+  extend: .button:disabled;
+}
+
+.button--quiet:hover {
+  extend: .button:hover;
+  text-shadow: var(text-shadow);
+  border: var(border);
+  box-shadow: var(box-shadow);
+}
+
+.button--quiet:focus {
+  extend: .button:focus;
+}
+
+.button--quiet:active {
+  color: var(color);
+  text-shadow: var(text-shadow);
+  background-color: var(background-color--down);
+  border: var(border);
+  box-shadow: var(box-shadow--down);
+}
+
+/* topdoc
+  name: Large Button
+  description: A big ol button
+  modifiers:
+    :active: Active state
+    :disabled: Disabled state
+    :hover: Hover state
+    :focus: Focused
+  markup:
+    <button class="topcoat-button--large" >Button</button>
+    <button class="topcoat-button--large" disabled>Button</button>
+  tags:
+    - desktop
+    - light
+    - mobile
+    - button
+    - large
+*/
+
+%button--common-large {
+  font-size: var(font-size--large);
+  font-weight: var(font-weight--large);
+  line-height: var(line-height--large);
+  padding: var(padding--large);
+}
+
+.button--large {
+  extend: .button;
+  extend: %button--common-large;
+}
+
+.button--large:active {
+  extend: .button:active;
+}
+
+.button--large:disabled {
+  extend: .button:disabled;
+}
+
+.button--large:hover {
+  extend: .button:hover;
+}
+
+.button--large:focus {
+  extend: .button:focus;
+}
+
+/* topdoc
+  name: Large Quiet Button
+  description: A large, yet quiet button
+  modifiers:
+    :active: Active state
+    :disabled: Disabled state
+    :hover: Hover state
+    :focus: Focused
+  markup:
+    <button class="topcoat-button--large--quiet" >Button</button>
+    <button class="topcoat-button--large--quiet" disabled>Button</button>
+  tags:
+    - desktop
+    - light
+    - mobile
+    - button
+    - large
+    - quiet
+*/
+
+.button--large--quiet {
+  extend: %button--common;
+  extend: %button--quiet;
+  extend: %button--common-large;
+}
+
+.button--large--quiet:active {
+  extend: .button--quiet:active;
+}
+
+.button--large--quiet:disabled {
+  extend: %button--disabled;
+}
+
+.button--large--quiet:hover {
+  extend: .button--quiet:hover;
+}
+
+.button--large--quiet:focus {
+  extend: .button:focus;
+}
+
+/* topdoc
+  name: Call To Action Button
+  description: A CALL TO ARMS, er, ACTION!
+  modifiers:
+    :active: Active state
+    :disabled: Disabled state
+    :hover: Hover state
+    :focus: Focused
+  markup:
+    <button class="topcoat-button--cta" >Button</button>
+    <button class="topcoat-button--cta" disabled>Button</button>
+  tags:
+    - desktop
+    - light
+    - mobile
+    - button
+    - call to action
+*/
+
+.button--cta {
+  extend: .button;
+  border: var(border--cta);
+  background-color: var(background-color--cta);
+  box-shadow: var(box-shadow--cta);
+  color: var(color--cta);
+  font-weight: var(font-weight--cta);
+  text-shadow: var(text-shadow--cta);
+}
+
+.button--cta:hover {
+  background-color: var(background-color--cta--hover);
+}
+
+.button--cta:focus {
+  extend: .button:focus;
+}
+
+.button--cta:active {
+  background-color: var(background-color--cta--down);
+  box-shadow: var(box-shadow--cta--down);
+}
+
+.button--cta:disabled {
+  extend: .button:disabled;
+}
+
+/* topdoc
+  name: Large Call To Action Button
+  description: Like call to action, but bigger
+  modifiers:
+    :active: Active state
+    :disabled: Disabled state
+    :hover: Hover state
+    :focus: Focused
+  markup:
+    <button class="topcoat-button--large--cta" >Button</button>
+    <button class="topcoat-button--large--cta" disabled>Button</button>
+  tags:
+    - desktop
+    - light
+    - mobile
+    - button
+    - large
+    - call to action
+*/
+
+.button--large--cta {
+  extend: .button--cta;
+  font-size: var(font-size--large);
+  font-weight: var(font-weight--large);
+  line-height: var(line-height--large);
+  padding: var(padding--large);
+}
+
+.button--large--cta:hover {
+  extend: .button--cta:hover;
+}
+
+.button--large--cta:focus {
+  extend: .button:focus;
+}
+
+.button--large--cta:active {
+  extend: .button--cta:active;
+}
+
+.button--large--cta:disabled {
+  extend: .button:disabled;
+}
+
+%button-bar {
+  display: table;
+  table-layout: fixed;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+}
+
+%button-bar__item {
+  display: table-cell;
+  width: auto;
+  border-radius: 0;
+}
+
+%button-bar__item--disabled {
+  extend: %disabled;
+}
+
+%button-bar__item__input {
+  extend: %hide-input;
+}
+
+%button-bar__button {
+  border-radius: inherit;
+}
+
+%button-bar__button--focus {
+  z-index: 1;
+}
+
+/* topdoc
+  name: Button Bar
+  description: Component of grouped buttons
+  modifiers:
+    :disabled: Disabled state
+  markup:
+    <div class="topcoat-button-bar">
+      <div class="topcoat-button-bar__item">
+        <button class="topcoat-button">One</button>
+      </div>
+      <div class="topcoat-button-bar__item">
+        <button class="topcoat-button">Two</button>
+      </div>
+      <div class="topcoat-button-bar__item">
+        <button class="topcoat-button">Three</button>
+      </div>
+      <div class="topcoat-button-bar__item">
+        <button class="topcoat-button">Four</button>
+      </div>
+    </div>
+  examples:
+    mobile button bar: http://codepen.io/Topcoat/pen/kdKyg
+  tags:
+    - desktop
+    - light
+    - dark
+    - mobile
+    - button
+    - group
+    - bar
+*/
+
+.button-bar {
+  extend: %button-bar;
+}
+
+.button-bar__item {
+  extend: %button-bar__item;
+}
+
+.button-bar > .button-bar__item:first-child {
+  border-top-left-radius: var(border-radius);
+  border-bottom-left-radius: var(border-radius);
+}
+
+.button-bar > .button-bar__item:last-child {
+  border-top-right-radius: var(border-radius);
+  border-bottom-right-radius: var(border-radius);
+}
+
+.button-bar__item > input {
+  extend: %button-bar__item__input;
+}
+
+.button-bar__item:not(:last-child) > .button,
+.button-bar__item:not(:last-child) > .button--large {
+  margin-right: -1px;
+}
+
+.button-bar__item > .button,
+.button_bar__item > .button--large {
+  border-radius: inherit;
+}
+
+.button:active,
+.button--large:active,
+:checked + .button {
+  extend: .button:active;
+}
+
+.button-bar__item > .button:focus,
+.button-bar__item > .button--large:focus {
+  extend: %button-bar__button--focus;
+}
+
+/* topdoc
+  name: Large Button Bar
+  description: A button bar, only larger
+  modifiers:
+    :disabled: Disabled state
+  markup:
+    <div class="topcoat-button-bar">
+      <div class="topcoat-button-bar__item">
+        <button class="topcoat-button--large">One</button>
+      </div>
+      <div class="topcoat-button-bar__item">
+        <button class="topcoat-button--large">Two</button>
+      </div>
+      <div class="topcoat-button-bar__item">
+        <button class="topcoat-button--large">Three</button>
+      </div>
+      <div class="topcoat-button-bar__item">
+        <button class="topcoat-button--large">Four</button>
+      </div>
+      <div class="topcoat-button-bar__item">
+        <button class="topcoat-button--large">Five</button>
+      </div>
+    </div>
+  tags:
+    - desktop
+    - light
+    - dark
+    - mobile
+    - button
+    - group
+    - bar
+    - large
+*/

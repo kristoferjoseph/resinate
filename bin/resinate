@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+var program = require('commander'),
+    resumer = require('resumer'),
+    stream = resumer(),
+    fs = require('fs'),
+    resin = require('resin'),
+    options = {};
+
+function list(val) {
+  return val.split(',');
+}
+
+program
+    .usage('[options] <file ...>')
+    .version(JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version)
+    .option('-s --source <file>', 'css file to process')
+    //.option('-o --output <file>', 'output file')
+    .option('-l --license <file> ', 'license file to append to the output')
+    .option('-n --namespace <string>', 'optional namespace to prefix all class selectors with')
+    .option('-b --browsers <items>', 'array of autoprefixer supported browser versions to add css property prefixes for', list)
+    .option('-u --url <string>', 'optional url to append to asset paths in css')
+    .option('-v --vars', 'use variables during processing')
+    .option('-e --extend', 'use extend during processing')
+    .option('-d --debug', 'generate a sourcemap for debugging')
+    .parse(process.argv);
+
+options.src = program.source;
+options.license = program.license;
+options.namespace = program.namespace;
+options.browsers = program.browsers;
+options.url = program.url;
+options.vars = program.vars;
+options.extend = program.extend;
+options.debug = program.debug;
+
+stream.queue(resin(options)).end();
+stream.pipe(process.stdout);
+
