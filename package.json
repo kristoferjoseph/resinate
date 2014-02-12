@@ -1,6 +1,6 @@
 {
   "name": "resinate",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Write CSS that uses import like a node.js require statement",
   "bin": "bin/resinate",
   "main": "index.js",
