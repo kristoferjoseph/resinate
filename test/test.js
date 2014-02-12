@@ -33,4 +33,24 @@ describe('resinate', function() {
         )
         .end(done);
     });
+
+    it('should parse browsers variable', function(done) {
+      nixt()
+        .run('resinate -s test/fixtures/browsers.css')
+        .stdout(fs.readFileSync('test/fixtures/browsers.out.css')
+          .toString()
+          .trim()
+        )
+        .end(done);
+    });
+
+    it('should parse browsers variable', function(done) {
+      nixt()
+        .run('resinate -s test/fixtures/browsers.css')
+        .stdout(fs.readFileSync('test/fixtures/browsers.out.css')
+          .toString()
+          .trim()
+        )
+        .end(done);
+    });
 });
