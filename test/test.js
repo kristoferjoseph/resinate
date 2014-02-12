@@ -46,7 +46,7 @@ describe('resinate', function() {
 
     it('should parse browsers variable', function(done) {
       nixt()
-        .run('resinate -s test/fixtures/browsers.css')
+        .run('resinate -s test/fixtures/browsers.css -b "Last 1 version" "BlackBerry 10" "Android 4"')
         .stdout(fs.readFileSync('test/fixtures/browsers.out.css')
           .toString()
           .trim()
