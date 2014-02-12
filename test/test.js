@@ -88,4 +88,6 @@ describe('resinate', function() {
         )
         .end(done);
     });
+
 });
+

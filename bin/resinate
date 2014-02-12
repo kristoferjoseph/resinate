@@ -18,7 +18,6 @@ program
     .usage('[options] <file ...>')
     .version(require('../package.json').version)
     .option('-s --source <file>', 'css file to process')
-    .option('-o --output <file>', 'output file')
     .option('-l --license <file> ', 'license file to append to the output')
     .option('-n --namespace <string>', 'optional namespace to prefix all class selectors with')
     .option('-b --browsers <items>', 'array of autoprefixer supported browser versions to add css property prefixes for', list)
