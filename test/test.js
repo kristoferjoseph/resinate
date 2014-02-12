@@ -53,4 +53,14 @@ describe('resinate', function() {
         )
         .end(done);
     });
+
+    it('should parse url variable', function(done) {
+      nixt()
+        .run('resinate -s test/fixtures/url.css -u production/images/')
+        .stdout(fs.readFileSync('test/fixtures/url.out.css')
+          .toString()
+          .trim()
+        )
+        .end(done);
+    });
 });
