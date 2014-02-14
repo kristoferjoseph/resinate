@@ -38,3 +38,10 @@ Example
 
 `resinate -s path/to/my/file.css -d -e -v > bundle.css`
 
+Test
+----
+
+To run the test suite
+
+* `npm link`
+* `npm test`

@@ -89,5 +89,14 @@ describe('resinate', function() {
         .end(done);
     });
 
+    it('should generate correct output from npm modules', function(done) {
+      nixt()
+        .run('resinate -s test/fixtures/resin.css -dev -n topcoat -l test/fixtures/license.txt ')
+        .stdout(fs.readFileSync('test/fixtures/resin.out.css')
+          .toString()
+          .trim()
+        )
+        .end(done);
+    });
 });
 
